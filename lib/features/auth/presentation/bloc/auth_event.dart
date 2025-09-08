@@ -25,3 +25,22 @@ final class ValidatorLoginForm extends AuthEvent {
   @override
   List<Object> get props => [email, password];
 }
+
+//
+final class RegisterEvent extends AuthEvent {
+  final String name;
+  final String email;
+  final String phone;
+  final String password;
+  final String confirmPassword;
+
+  const RegisterEvent(
+    this.name,
+    this.email,
+    this.phone,
+    this.password,
+    this.confirmPassword,
+  );
+  @override
+  List<Object> get props => [name, email, phone, password, confirmPassword];
+}

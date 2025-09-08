@@ -7,6 +7,7 @@ class AppImages {
   static const String onBoarding6 = "assets/images/onBoarding6.png";
   static const String logo = "assets/images/logo.png";
   static const String logoRoute = "assets/images/logo_route.png";
-  static const String ForgotPassword ="assets/images/ForgotPassword.png";
-
+  static const String ForgotPassword = "assets/images/ForgotPassword.png";
+  //
+  static const String loadingJson = "assets/lottie/loading_style.json";
 }

@@ -40,7 +40,10 @@ abstract class RoutesPage {
         );
       case RoutesName.registerScreen:
         return MaterialPageRoute(
-          builder: (context) => const RegisterScreen(),
+          builder: (context) => BlocProvider(
+            create: (_) => AuthBloc(),
+            child: const RegisterScreen(),
+          ),
           settings: settings,
         );
       case RoutesName.forgetPassword:

@@ -22,6 +22,11 @@ final class AuthSuccess extends AuthState {
   List<Object?> get props => [user];
 }
 
+final class AuthRegisterSuccess extends AuthState {
+  @override
+  List<Object?> get props => [];
+}
+
 final class AuthFailure extends AuthState {
   final Failure fail;
 
