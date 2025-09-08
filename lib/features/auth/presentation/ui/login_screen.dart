@@ -34,7 +34,10 @@ class _LoginScreenState extends State<LoginScreen> {
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is AuthSuccess) {
-            Navigator.pushReplacementNamed(context, RoutesName.homeScreen);
+            Navigator.pushReplacementNamed(
+              context,
+              RoutesName.layoutController,
+            );
           }
           if (state is AuthFailure) {
             toastification.show(

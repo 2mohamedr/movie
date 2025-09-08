@@ -49,6 +49,7 @@ class _HomeMovieCategoryWidgetState extends State<HomeMovieCategoryWidget> {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
+        spacing: 12,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

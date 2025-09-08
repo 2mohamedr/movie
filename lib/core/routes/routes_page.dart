@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/core/routes/routes_name.dart';
 import 'package:movies_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:movies_app/features/home/home_screen.dart';
+import 'package:movies_app/layout_controller.dart';
 
 import '../../features/auth/presentation/ui/forget_password.dart';
 import '../../features/auth/presentation/ui/login_screen.dart';
@@ -59,6 +60,11 @@ abstract class RoutesPage {
       case RoutesName.homeScreen:
         return MaterialPageRoute(
           builder: (context) => const HomeScreen(),
+          settings: settings,
+        );
+      case RoutesName.layoutController:
+        return MaterialPageRoute(
+          builder: (context) => const LayoutController(),
           settings: settings,
         );
 
