@@ -22,18 +22,11 @@ final class AuthSuccess extends AuthState {
   List<Object?> get props => [user];
 }
 
-final class AuthGetProfileSuccess extends AuthState {
-  @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
-}
-
 final class AuthFailure extends AuthState {
   final Failure fail;
 
   const AuthFailure(this.fail);
 
   @override
-  // TODO: implement props
   List<Object?> get props => [fail];
 }
