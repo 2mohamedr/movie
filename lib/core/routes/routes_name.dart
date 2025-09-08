@@ -6,4 +6,5 @@ abstract class RoutesName {
   static const String registerScreen = "/register_screen";
   static const String forgetPassword = "/forget_password";
   static const String profileScreen = "/profile_screen";
+  static const String homeScreen = "/home_screen";
 }

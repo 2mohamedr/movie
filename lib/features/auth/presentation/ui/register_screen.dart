@@ -1,35 +1,29 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/core/constants/app_icons.dart';
-import 'package:movies_app/core/constants/app_images.dart';
 import 'package:movies_app/core/routes/routes_name.dart';
 import 'package:movies_app/core/theme_manager/color_palette.dart';
+import 'package:movies_app/core/widgets/custom_text_field.dart';
 
-import 'custom_button.dart';
-
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   String current = "AR";
-
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
-
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 16),
         child: ListView(
           children: [
             Column(
-              spacing: 16,
+              spacing: 24,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Column(
@@ -40,60 +34,38 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Bounce(
                         duration: const Duration(seconds: 1),
                         child: Image.asset(
-                          AppImages.logo,
+                          AppIcons.iconProfile,
                           fit: BoxFit.cover,
-                          height: 120,
+                          height: 150,
                         ),
                       ),
                     ),
-                    ElasticIn(
-                      child: AnimatedTextKit(
-                        animatedTexts: [
-                          ColorizeAnimatedText(
-                            'Movie',
-                            textStyle: theme.textTheme.titleLarge!,
-                            colors: [
-                              ColorsPallete.PrimaryColor,
-                              ColorsPallete.white,
-                              ColorsPallete.PrimaryColor,
-                              ColorsPallete.PrimaryColor,
-                            ],
-                          ),
-                        ],
-                        repeatForever: true,
-                        pause: const Duration(seconds: 5),
-                      ),
-                    ),
+                    Text("Avatar"),
                   ],
                 ),
 
                 const CustomTextField(
+                  hintText: "Name",
+                  imagePath: AppIcons.iconIdentification,
+                ),
+                const CustomTextField(
                   hintText: "Email",
                   imagePath: AppIcons.iconEmail,
                 ),
-
                 const CustomTextField(
                   hintText: "Password",
                   imagePath: AppIcons.iconPassword,
                   isPassword: true,
                 ),
-
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(
-                        context,
-                        RoutesName.forgetPassword,
-                      );
-                    },
-                    child: const Text(
-                      "Forget Password ?",
-                      style: TextStyle(color: ColorsPallete.PrimaryColor),
-                    ),
-                  ),
+                const CustomTextField(
+                  hintText: "Confirm Password",
+                  imagePath: AppIcons.iconPassword,
+                  isPassword: true,
                 ),
-
+                const CustomTextField(
+                  hintText: "Phone",
+                  imagePath: AppIcons.iconPhone,
+                ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: ColorsPallete.PrimaryColor,
@@ -106,28 +78,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () {
                     Navigator.pushReplacementNamed(
                       context,
-                      RoutesName.profileScreen,
+                      RoutesName.loginScreen,
                     );
                   },
-                  child: const Text("Login"),
+                  child: const Text("Create Account"),
                 ),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      "Don’t Have Account ? ",
+                      "Already Have Account ? ",
                       style: TextStyle(color: ColorsPallete.white),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        Navigator.pushReplacementNamed(
-                          context,
-                          RoutesName.registerScreen,
-                        );
-                      },
+                      onTap: () {},
                       child: const Text(
-                        "Create One",
+                        "Login",
                         style: TextStyle(
                           color: ColorsPallete.PrimaryColor,
                           fontWeight: FontWeight.bold,
@@ -135,41 +101,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ],
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 50),
-                  child: Row(
-                    children: [
-                      const Expanded(
-                        child: Divider(color: ColorsPallete.PrimaryColor),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: const Text(
-                          "OR",
-                          style: TextStyle(color: ColorsPallete.PrimaryColor),
-                        ),
-                      ),
-                      const Expanded(
-                        child: Divider(color: ColorsPallete.PrimaryColor),
-                      ),
-                    ],
-                  ),
-                ),
-
-                ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: ColorsPallete.PrimaryColor,
-                    foregroundColor: ColorsPallete.Dark,
-                    minimumSize: const Size(double.infinity, 50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                  ),
-                  onPressed: () {},
-                  icon: Image.asset(AppIcons.iconGoogle, width: 24, height: 24),
-                  label: const Text("Login With Google"),
                 ),
                 Center(
                   child: AnimatedToggleSwitch<String>.rolling(
