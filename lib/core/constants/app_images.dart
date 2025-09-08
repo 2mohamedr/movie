@@ -10,4 +10,7 @@ class AppImages {
   static const String ForgotPassword = "assets/images/ForgotPassword.png";
   //
   static const String loadingJson = "assets/lottie/loading_style.json";
+  static const String availableNowTextImg =
+      "assets/images/available_now_img.png";
+  static const String watchNowTextImg = "assets/images/watch_now_img.png";
 }
