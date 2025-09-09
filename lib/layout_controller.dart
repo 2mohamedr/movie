@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies_app/core/constants/app_icons.dart';
 import 'package:movies_app/core/theme_manager/color_palette.dart';
@@ -23,11 +24,11 @@ class _LayoutControllerState extends State<LayoutController> {
           FloatingActionButtonLocation.miniCenterFloat,
       floatingActionButtonAnimator: FloatingActionButtonAnimator.noAnimation,
       floatingActionButton: Container(
-        margin: EdgeInsets.symmetric(horizontal: 9),
-        padding: EdgeInsets.symmetric(vertical: 19, horizontal: 33),
+        margin: EdgeInsets.symmetric(horizontal: 9).w,
+        padding: EdgeInsets.symmetric(vertical: 19.h, horizontal: 33.w),
         decoration: BoxDecoration(
           color: ColorsPallete.darkTwo,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(16).r,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -40,7 +41,7 @@ class _LayoutControllerState extends State<LayoutController> {
               },
               child: SvgPicture.asset(
                 AppIcons.homeIcon,
-                width: 22,
+                width: 22.w,
                 colorFilter: (currentScreenIndex == 0)
                     ? ColorFilter.mode(
                         ColorsPallete.PrimaryColor,
@@ -57,7 +58,7 @@ class _LayoutControllerState extends State<LayoutController> {
               },
               child: SvgPicture.asset(
                 AppIcons.searchIcon,
-                width: 22,
+                width: 22.w,
                 colorFilter: (currentScreenIndex == 1)
                     ? ColorFilter.mode(
                         ColorsPallete.PrimaryColor,
@@ -74,7 +75,7 @@ class _LayoutControllerState extends State<LayoutController> {
               },
               child: SvgPicture.asset(
                 AppIcons.exploreIcon,
-                width: 22,
+                width: 22.w,
                 colorFilter: (currentScreenIndex == 2)
                     ? ColorFilter.mode(
                         ColorsPallete.PrimaryColor,
@@ -91,7 +92,7 @@ class _LayoutControllerState extends State<LayoutController> {
               },
               child: SvgPicture.asset(
                 AppIcons.userIcon,
-                width: 22,
+                width: 22.w,
                 colorFilter: (currentScreenIndex == 3)
                     ? ColorFilter.mode(
                         ColorsPallete.PrimaryColor,

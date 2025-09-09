@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/models/movie_model.dart';
 import 'package:movies_app/core/theme_manager/color_palette.dart';
 import 'package:movies_app/core/widgets/movie_box_widget.dart';
@@ -23,9 +24,9 @@ class _HomeMovieCategoryWidgetState extends State<HomeMovieCategoryWidget> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16.0).w,
       child: Column(
-        spacing: 12,
+        spacing: 12.h,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,7 +43,7 @@ class _HomeMovieCategoryWidgetState extends State<HomeMovieCategoryWidget> {
                   foregroundColor: ColorsPallete.PrimaryColor,
                 ),
                 child: Row(
-                  spacing: 2,
+                  spacing: 2.w,
                   children: [
                     Text(
                       "See More",
@@ -58,7 +59,7 @@ class _HomeMovieCategoryWidgetState extends State<HomeMovieCategoryWidget> {
             ],
           ),
           SizedBox(
-            height: 220,
+            height: 220.h,
             child: ListView.builder(
               itemCount: widget.movies.length,
               scrollDirection: Axis.horizontal,

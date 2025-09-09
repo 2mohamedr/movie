@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:movies_app/core/theme_manager/color_palette.dart';
 import 'package:movies_app/features/home/widgets/home_movie_category_widget.dart';
@@ -31,6 +32,7 @@ class HomeScreen extends StatelessWidget {
                         movies: e.value,
                       ),
                     ),
+                    SizedBox(height: 100.h),
                   ],
                 ),
               );
@@ -39,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                 child: Lottie.asset(
                   AppImages.loadingJson,
                   backgroundLoading: false,
-                  width: 120,
+                  width: 120.w,
                 ),
               );
             } else if (state is HomeError) {

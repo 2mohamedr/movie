@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/routes/routes_name.dart';
 import 'package:movies_app/core/routes/routes_page.dart';
 import 'package:toastification/toastification.dart';
@@ -16,12 +17,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ToastificationWrapper(
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Movies App',
-        initialRoute: RoutesName.init,
-        onGenerateRoute: RoutesPage.onGenerateRoutes,
-        theme: ThemeManager.themeData,
+      child: ScreenUtilInit(
+        designSize: Size(430, 932),
+        minTextAdapt: true,
+        ensureScreenSize: true,
+        splitScreenMode: true,
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Movies App',
+          initialRoute: RoutesName.init,
+          onGenerateRoute: RoutesPage.onGenerateRoutes,
+          theme: ThemeManager.themeData,
+        ),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:movies_app/core/constants/app_images.dart';
 
@@ -16,12 +17,12 @@ class MovieBoxWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return Container(
-      margin: EdgeInsets.only(right: 16.0),
+      margin: EdgeInsets.only(right: 16.0).w,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(20).r,
             child: Image.network(
               posterImg,
               fit: BoxFit.cover,
@@ -30,7 +31,7 @@ class MovieBoxWidget extends StatelessWidget {
                   return child;
                 }
                 return Center(
-                  child: Lottie.asset(AppImages.loadingJson, width: 100),
+                  child: Lottie.asset(AppImages.loadingJson, width: 100.w),
                 );
               },
               errorBuilder: (context, error, stackTrace) {
@@ -44,11 +45,11 @@ class MovieBoxWidget extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 color: Color.fromRGBO(18, 19, 18, 0.71),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(10).r,
               ),
               padding: EdgeInsets.all(5),
               child: Row(
-                spacing: 5,
+                spacing: 5.w,
                 children: [
                   Text(
                     rating,
@@ -56,7 +57,7 @@ class MovieBoxWidget extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                     ),
                   ),
-                  Icon(Icons.star, size: 23, color: Colors.amber),
+                  Icon(Icons.star, size: 23.w, color: Colors.amber),
                 ],
               ),
             ),
