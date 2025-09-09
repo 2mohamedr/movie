@@ -5,4 +5,5 @@ class ColorsPallete {
   static const Color Dark = Color(0xff121312);
   static const Color darkTwo = Color(0xFF282A28);
   static const Color white = Color(0xffffffff);
+  static const Color danger = Color(0xFFE82626);
 }

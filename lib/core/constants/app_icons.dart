@@ -15,4 +15,7 @@ class AppIcons {
   static const String searchPngIcon = "assets/icons/searchIcon.png";
   static const String exploreIcon = "assets/icons/explore_icon.svg";
   static const String userIcon = "assets/icons/user_icon.svg";
+  static const String exitIcon = "assets/icons/exit_icon.png";
+  static const String menuPrimaryColorIcon = "assets/icons/menu_icon.png";
+  static const String folderPrimaryColorIcon = "assets/icons/folder_icon.png";
 }
