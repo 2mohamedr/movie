@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies_app/core/constants/app_icons.dart';
 import 'package:movies_app/core/theme_manager/color_palette.dart';
+import 'package:movies_app/features/browse/ui/browse_screen.dart';
 import 'package:movies_app/features/home/home_screen.dart';
 import 'package:movies_app/features/search/ui/search_screen.dart';
 
@@ -14,7 +15,7 @@ class LayoutController extends StatefulWidget {
 }
 
 class _LayoutControllerState extends State<LayoutController> {
-  List<Widget> originScreens = [HomeScreen(), SearchScreen(), HomeScreen()];
+  List<Widget> originScreens = [HomeScreen(), SearchScreen(), BrowseScreen()];
   int currentScreenIndex = 0;
 
   @override
