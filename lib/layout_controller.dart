@@ -21,7 +21,7 @@ class _LayoutControllerState extends State<LayoutController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: originScreens[0],
+      body: originScreens[currentScreenIndex],
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterFloat,
       floatingActionButtonAnimator: FloatingActionButtonAnimator.noAnimation,
