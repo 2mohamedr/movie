@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
+import 'package:movies_app/core/constants/app_images.dart';
 
 class MovieBoxWidget extends StatelessWidget {
   const MovieBoxWidget({
@@ -20,7 +22,21 @@ class MovieBoxWidget extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: Image.network(posterImg, fit: BoxFit.cover),
+            child: Image.network(
+              posterImg,
+              fit: BoxFit.cover,
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) {
+                  return child;
+                }
+                return Center(
+                  child: Lottie.asset(AppImages.loadingJson, width: 100),
+                );
+              },
+              errorBuilder: (context, error, stackTrace) {
+                return Image.asset(AppImages.ForgotPassword);
+              },
+            ),
           ),
           Positioned(
             top: 11,
