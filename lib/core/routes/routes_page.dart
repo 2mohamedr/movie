@@ -10,7 +10,7 @@ import '../../features/auth/presentation/ui/login_screen.dart';
 import '../../features/auth/presentation/ui/register_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
 import '../../features/onboarding/start.dart';
-import '../../features/profile/profile_screen.dart';
+import '../../features/profile/ui/update_profile_screen.dart';
 import '../../features/splash/splash_screen.dart';
 
 abstract class RoutesPage {
