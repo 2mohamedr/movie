@@ -20,8 +20,7 @@ class _LayoutControllerState extends State<LayoutController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsPallete.Dark,
-      body: originScreens[currentScreenIndex],
+      body: originScreens[0],
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterFloat,
       floatingActionButtonAnimator: FloatingActionButtonAnimator.noAnimation,
