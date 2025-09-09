@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/theme_manager/color_palette.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -6,7 +7,9 @@ class CustomTextField extends StatefulWidget {
   final IconData? icon;
   final String? imagePath;
   final bool isPassword;
+  final Color? backgroundColor;
   final String? Function(String?)? validator;
+  final void Function(String)? onChanged;
   final TextEditingController? controller;
 
   const CustomTextField({
@@ -17,6 +20,8 @@ class CustomTextField extends StatefulWidget {
     this.isPassword = false,
     this.validator,
     this.controller,
+    this.backgroundColor,
+    this.onChanged,
   });
 
   @override
@@ -38,9 +43,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
       validator: widget.validator,
       obscureText: _obscureText,
       controller: widget.controller,
+      onChanged: widget.onChanged,
       decoration: InputDecoration(
         filled: true,
-        fillColor: ColorsPallete.Dark,
+        fillColor: widget.backgroundColor ?? ColorsPallete.Dark,
         hintText: widget.hintText,
         hintStyle: const TextStyle(color: ColorsPallete.white),
 
@@ -51,8 +57,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       padding: const EdgeInsets.all(12.0),
                       child: Image.asset(
                         widget.imagePath!,
-                        width: 24,
-                        height: 24,
+                        width: 24.w,
+                        height: 24.h,
                         color: ColorsPallete.white,
                       ),
                     )

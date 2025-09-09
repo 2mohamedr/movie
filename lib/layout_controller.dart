@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies_app/core/constants/app_icons.dart';
 import 'package:movies_app/core/theme_manager/color_palette.dart';
 import 'package:movies_app/features/home/home_screen.dart';
+import 'package:movies_app/features/search/ui/search_screen.dart';
 
 class LayoutController extends StatefulWidget {
   const LayoutController({super.key});
@@ -13,13 +14,14 @@ class LayoutController extends StatefulWidget {
 }
 
 class _LayoutControllerState extends State<LayoutController> {
-  List<Widget> originScreens = [HomeScreen(), HomeScreen(), HomeScreen()];
+  List<Widget> originScreens = [HomeScreen(), SearchScreen(), HomeScreen()];
   int currentScreenIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: originScreens[0],
+      backgroundColor: ColorsPallete.Dark,
+      body: originScreens[currentScreenIndex],
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterFloat,
       floatingActionButtonAnimator: FloatingActionButtonAnimator.noAnimation,

@@ -12,6 +12,7 @@ class AppIcons {
   //
   static const String homeIcon = "assets/icons/home_icon.svg";
   static const String searchIcon = "assets/icons/search_icon.svg";
+  static const String searchPngIcon = "assets/icons/searchIcon.png";
   static const String exploreIcon = "assets/icons/explore_icon.svg";
   static const String userIcon = "assets/icons/user_icon.svg";
 }

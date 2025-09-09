@@ -13,4 +13,5 @@ class AppImages {
   static const String availableNowTextImg =
       "assets/images/available_now_img.png";
   static const String watchNowTextImg = "assets/images/watch_now_img.png";
+  static const String emptyImg = "assets/images/empty_content_img.png";
 }
