@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/constants/app_icons.dart';
 import 'package:movies_app/core/constants/app_images.dart';
+import 'package:movies_app/core/routes/routes_name.dart';
 import 'package:movies_app/core/theme_manager/color_palette.dart';
 import 'package:movies_app/core/widgets/movie_box_widget.dart';
 
@@ -112,7 +113,12 @@ class ProfileScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(12),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                context,
+                                RoutesName.profileScreen,
+                              );
+                            },
                             child: Text(
                               "Edit Profile",
                               style: theme.textTheme.bodyMedium?.copyWith(

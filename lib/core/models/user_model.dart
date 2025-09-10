@@ -14,12 +14,16 @@ class UserModel {
 
   factory UserModel.fromJson(Map<String, dynamic> map) {
     final dataMap = map['data'] ?? map;
-    return UserModel(
+    var user = UserModel(
       email: dataMap['email'],
       name: dataMap['name'],
       phone: dataMap['phone'],
-      avatarId: dataMap['avaterId'].toString(),
+      avatarId: (dataMap['avaterId'] ?? dataMap['avatarId']).toString(),
     );
+    if (map['data'] == null) {
+      user.token = dataMap['token'];
+    }
+    return user;
   }
 
   Map<String, dynamic> toJson() {
