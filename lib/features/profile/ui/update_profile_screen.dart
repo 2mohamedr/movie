@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -70,6 +72,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 icon: Icon(Icons.check_circle),
                 autoCloseDuration: Duration(seconds: 5),
               );
+              Navigator.pop(context);
             }
             if (state is ProfileError) {
               toastification.show(
@@ -113,6 +116,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 } else if (state is ProfileSuccess) {
                   nameController.text = state.user.name;
                   phoneController.text = state.user.phone;
+                  log(nameController.text);
                   return SingleChildScrollView(
                     padding: const EdgeInsets.all(20),
                     child: Column(

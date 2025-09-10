@@ -73,18 +73,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           } else {
             emit(ProfileError("Cannot Update Profile, Try Again later..."));
           }
-          // if (r) {
-          //   Request.getProfile(user.token!).then((value) {
-          //     value.fold((l) => emit(CannotUpdateLocalProfileData(l.message)), (
-          //       r,
-          //     ) async {
-          //       await prefs.setString("user_detail", jsonEncode(r));
-          //       emit(ProfileSuccess(user));
-          //     });
-          //   });
-          // } else {
-          //   emit(ProfileError("Cannot Update Profile, Try Again later..."));
-          // }
         },
       );
     }

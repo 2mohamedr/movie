@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/core/routes/routes_name.dart';
-import 'package:movies_app/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:movies_app/features/home/home_screen.dart';
 import 'package:movies_app/layout_controller.dart';
 
-import '../../features/auth/presentation/ui/forget_password.dart';
-import '../../features/auth/presentation/ui/login_screen.dart';
-import '../../features/auth/presentation/ui/register_screen.dart';
+import '../../features/auth/bloc/auth_bloc.dart';
+import '../../features/auth/ui/forget_password.dart';
+import '../../features/auth/ui/login_screen.dart';
+import '../../features/auth/ui/register_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
 import '../../features/onboarding/start.dart';
 import '../../features/profile/ui/update_profile_screen.dart';
@@ -17,60 +16,89 @@ abstract class RoutesPage {
   static Route onGenerateRoutes(RouteSettings settings) {
     switch (settings.name) {
       case RoutesName.init:
-        return MaterialPageRoute(
-          builder: (context) => const SplashScreen(),
+        return PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              SplashScreen(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
           settings: settings,
         );
       case RoutesName.onboarding:
-        return MaterialPageRoute(
-          builder: (context) => const StartScreens(),
+        return PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              StartScreens(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
           settings: settings,
         );
       case RoutesName.onboardingContent:
-        return MaterialPageRoute(
-          builder: (context) => const OnboardingScreen(),
+        return PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              OnboardingScreen(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
           settings: settings,
         );
       case RoutesName.loginScreen:
-        return MaterialPageRoute(
-          builder: (context) => BlocProvider(
+        return PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) => BlocProvider(
             create: (_) => AuthBloc(),
             child: const LoginScreen(),
           ),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
           settings: settings,
         );
       case RoutesName.registerScreen:
-        return MaterialPageRoute(
-          builder: (context) => BlocProvider(
+        return PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) => BlocProvider(
             create: (_) => AuthBloc(),
             child: const RegisterScreen(),
           ),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
           settings: settings,
         );
       case RoutesName.forgetPassword:
-        return MaterialPageRoute(
-          builder: (context) => const ForgetPassword(),
+        return PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              ForgetPassword(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
           settings: settings,
         );
       case RoutesName.profileScreen:
-        return MaterialPageRoute(
-          builder: (context) => const ProfileScreen(),
-          settings: settings,
-        );
-      case RoutesName.homeScreen:
-        return MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
+        return PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              ProfileScreen(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
           settings: settings,
         );
       case RoutesName.layoutController:
-        return MaterialPageRoute(
-          builder: (context) => const LayoutController(),
+        return PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              LayoutController(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
           settings: settings,
         );
 
       default:
-        return MaterialPageRoute(
-          builder: (context) => const SplashScreen(),
+        return PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              LoginScreen(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
           settings: settings,
         );
     }
