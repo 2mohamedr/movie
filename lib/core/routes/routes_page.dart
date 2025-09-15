@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/core/routes/routes_name.dart';
+import 'package:movies_app/features/movie_details/ui/movie_details_screen.dart';
 import 'package:movies_app/layout_controller.dart';
 
 import '../../features/auth/bloc/auth_bloc.dart';
@@ -86,6 +87,16 @@ abstract class RoutesPage {
         return PageRouteBuilder(
           pageBuilder: (context, animation, secondaryAnimation) =>
               LayoutController(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
+          settings: settings,
+        );
+      case RoutesName.movieDetails:
+        final poster = settings.arguments as String;
+        return PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              MovieDetailsScreen(poster: poster),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeTransition(opacity: animation, child: child);
           },

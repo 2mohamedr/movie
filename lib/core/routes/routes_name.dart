@@ -8,4 +8,5 @@ abstract class RoutesName {
   static const String profileScreen = "/profile_screen";
   static const String homeScreen = "/home_screen";
   static const String layoutController = "/layout_controller";
+  static const String movieDetails = "/movie_details";
 }

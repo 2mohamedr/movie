@@ -3,7 +3,7 @@ import 'package:movies_app/core/theme_manager/color_palette.dart';
 
 abstract class ThemeManager {
   static ThemeData themeData = ThemeData(
-    primaryColor:ColorsPallete.PrimaryColor ,
+    primaryColor: ColorsPallete.PrimaryColor,
     appBarTheme: AppBarTheme(
       backgroundColor: ColorsPallete.Dark,
       centerTitle: true,
@@ -64,5 +64,3 @@ abstract class ThemeManager {
     ),
   );
 }
-
-

@@ -18,4 +18,10 @@ class AppIcons {
   static const String exitIcon = "assets/icons/exit_icon.png";
   static const String menuPrimaryColorIcon = "assets/icons/menu_icon.png";
   static const String folderPrimaryColorIcon = "assets/icons/folder_icon.png";
+
+  //
+  static const String favIcon = "assets/icons/love_icon.png";
+  static const String playIcon = "assets/icons/play_icon.png";
+  static const String ratingIcon = "assets/icons/rating_icon.png";
+  static const String runtimeIcon = "assets/icons/runtime_icon.png";
 }

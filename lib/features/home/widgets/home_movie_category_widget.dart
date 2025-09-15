@@ -60,7 +60,7 @@ class _HomeMovieCategoryWidgetState extends State<HomeMovieCategoryWidget> {
           ),
           SizedBox(
             height: 220.h,
-            child: ListView.builder(
+            child: ListView.separated(
               itemCount: widget.movies.length,
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
@@ -70,6 +70,7 @@ class _HomeMovieCategoryWidgetState extends State<HomeMovieCategoryWidget> {
                   rating: widget.movies[index].rating,
                 );
               },
+              separatorBuilder: (context, index) => SizedBox(width: 20.w),
             ),
           ),
         ],

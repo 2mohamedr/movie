@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:movies_app/core/constants/app_images.dart';
+import 'package:movies_app/core/routes/routes_name.dart';
 
 class MovieBoxWidget extends StatelessWidget {
   const MovieBoxWidget({
@@ -16,53 +17,62 @@ class MovieBoxWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    return Container(
-      margin: EdgeInsets.only(right: 16.0).w,
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20).r,
-            child: Image.network(
-              posterImg,
-              fit: BoxFit.cover,
-              loadingBuilder: (context, child, loadingProgress) {
-                if (loadingProgress == null) {
-                  return child;
-                }
-                return Center(
-                  child: Lottie.asset(AppImages.loadingJson, width: 100.w),
-                );
-              },
-              errorBuilder: (context, error, stackTrace) {
-                return Image.asset(AppImages.ForgotPassword);
-              },
-            ),
-          ),
-          Positioned(
-            top: 11,
-            left: 9,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Color.fromRGBO(18, 19, 18, 0.71),
-                borderRadius: BorderRadius.circular(10).r,
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          RoutesName.movieDetails,
+          arguments: posterImg,
+        );
+      },
+      child: Container(
+        margin: EdgeInsets.zero,
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20).r,
+              child: Image.network(
+                posterImg,
+                fit: BoxFit.cover,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) {
+                    return child;
+                  }
+                  return Center(
+                    child: Lottie.asset(AppImages.loadingJson, width: 100.w),
+                  );
+                },
+                errorBuilder: (context, error, stackTrace) {
+                  return Image.asset(AppImages.ForgotPassword);
+                },
               ),
-              padding: EdgeInsets.all(5),
-              child: Row(
-                spacing: 5.w,
-                children: [
-                  Text(
-                    rating,
-                    style: theme.textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.w400,
+            ),
+            Positioned(
+              top: 11,
+              left: 9,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Color.fromRGBO(18, 19, 18, 0.71),
+                  borderRadius: BorderRadius.circular(10).r,
+                ),
+                padding: EdgeInsets.all(5),
+                child: Row(
+                  spacing: 5.w,
+                  children: [
+                    Text(
+                      rating,
+                      style: theme.textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
-                  ),
-                  Icon(Icons.star, size: 23.w, color: Colors.amber),
-                ],
+                    Icon(Icons.star, size: 23.w, color: Colors.amber),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
