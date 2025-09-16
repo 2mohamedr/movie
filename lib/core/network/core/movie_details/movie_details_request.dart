@@ -1,0 +1,76 @@
+import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
+import 'package:movies_app/core/failure/failure.dart';
+import 'package:movies_app/core/models/movie_details_model.dart';
+import 'package:movies_app/core/models/movie_model.dart';
+import 'package:movies_app/core/network/core/core_base.dart';
+
+class MovieDetailsRequest {
+  static final dio = Dio();
+
+  static Future<Either<Failure, MovieDetailsModel>> getMovieDetails(
+    int id,
+  ) async {
+    try {
+      final res = await dio.get(
+        "${CoreBase.url}/${CoreEndpoint.movieDetails}",
+        queryParameters: {
+          "movie_id": id.toString(),
+          "with_images": "true",
+          "with_cast": "true",
+        },
+      );
+      if (res.data['data']['movie']['id'] == 0) {
+        return Left(
+          Failure(
+            message: "Movie doesn't exists",
+            statusCode: "INVALID_RESPONSE_ID",
+          ),
+        );
+      }
+      return Right(MovieDetailsModel.fromJson(res.data['data']['movie']));
+    } on DioException catch (e) {
+      return Left(
+        Failure(
+          statusCode: e.response!.statusCode.toString(),
+          message: e.message ?? "Unexpected Error",
+        ),
+      );
+    } catch (e) {
+      return Left(Failure(statusCode: "500", message: e.toString()));
+    }
+  }
+
+  static Future<Either<Failure, List<MovieModel>>> getMovieSimilar(
+    int id,
+  ) async {
+    try {
+      final res = await dio.get(
+        "${CoreBase.url}/${CoreEndpoint.movieSuggestions}",
+        queryParameters: {"movie_id": id},
+      );
+      if (res.data['data']['movies'][0]['id'] == 0) {
+        return Left(
+          Failure(
+            message: "Movie doesn't exists",
+            statusCode: "INVALID_RESPONSE_ID",
+          ),
+        );
+      }
+      return Right(
+        (res.data['data']['movies'] as List).map((e) {
+          return MovieModel.fromJson(e);
+        }).toList(),
+      );
+    } on DioException catch (e) {
+      return Left(
+        Failure(
+          statusCode: e.response!.statusCode.toString(),
+          message: e.message ?? "Unexpected Error",
+        ),
+      );
+    } catch (e) {
+      return Left(Failure(statusCode: "500", message: e.toString()));
+    }
+  }
+}

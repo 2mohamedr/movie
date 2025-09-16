@@ -18,7 +18,10 @@ class MovieModel {
       id: map['id'],
       title: map['title'],
       rating: map['rating'].toString(),
-      poster: map['large_cover_image'],
+      poster:
+          map['large_cover_image'] ??
+          map['medium_cover_image'] ??
+          map['small_cover_image'],
       genres: List<String>.from(map['genres'] ?? []),
     );
   }

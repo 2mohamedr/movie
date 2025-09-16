@@ -49,7 +49,7 @@ class MovieDetailsModel {
       screenShotImageOne: map['large_screenshot_image1'],
       screenShotImageTwo: map['large_screenshot_image2'],
       screenShotImageThree: map['large_screenshot_image3'],
-      casts: (map['genres'] as List).map((e) {
+      casts: (map['cast'] as List).map((e) {
         return CastModel.fromJson(e);
       }).toList(),
     );
