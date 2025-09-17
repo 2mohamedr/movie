@@ -71,7 +71,7 @@ class CastModel {
     return CastModel(
       name: map['name'],
       characterName: map['character_name'],
-      image: map['url_small_image'],
+      image: map['url_small_image'] ?? '',
     );
   }
 }

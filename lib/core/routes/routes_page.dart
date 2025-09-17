@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/core/routes/routes_name.dart';
+import 'package:movies_app/features/movie_details/bloc/movie/movie_details_bloc.dart';
 import 'package:movies_app/features/movie_details/ui/movie_details_screen.dart';
 import 'package:movies_app/layout_controller.dart';
 
@@ -93,10 +94,13 @@ abstract class RoutesPage {
           settings: settings,
         );
       case RoutesName.movieDetails:
-        final poster = settings.arguments as String;
+        final movieId = settings.arguments as int;
         return PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) =>
-              MovieDetailsScreen(poster: poster),
+          pageBuilder: (context, animation, secondaryAnimation) => BlocProvider(
+            create: (context) =>
+                MovieDetailsBloc()..add(MovieDetailsInit(movieId)),
+            child: MovieDetailsScreen(id: movieId),
+          ),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeTransition(opacity: animation, child: child);
           },

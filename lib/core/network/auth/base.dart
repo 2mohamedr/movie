@@ -14,5 +14,5 @@ class Endpoint {
   static const String getAllFavorites = "favorites/all";
   static const String addToFavorites = "favorites/add";
   static const String removeFromFavorites = "favorites/remove/movieId";
-  static const String isFavorites = "favorites/is-favorite/movieId";
+  static const String isFavorites = "favorites/is-favorite";
 }

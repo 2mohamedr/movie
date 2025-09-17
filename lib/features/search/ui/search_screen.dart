@@ -90,6 +90,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         return MovieBoxWidget(
                           posterImg: tempMovies[index]['img'],
                           rating: tempMovies[index]['rating'].toString(),
+                          id: 0,
                         );
                       },
                     ),

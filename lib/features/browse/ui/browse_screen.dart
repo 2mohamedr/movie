@@ -134,6 +134,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
                 itemCount: tempMovies.length,
                 itemBuilder: (context, index) {
                   return MovieBoxWidget(
+                    id: 0,
                     posterImg: tempMovies[index]['img'],
                     rating: tempMovies[index]['rating'].toString(),
                   );

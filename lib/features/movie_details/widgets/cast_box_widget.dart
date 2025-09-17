@@ -26,15 +26,16 @@ class CastBoxWidget extends StatelessWidget {
       child: Row(
         spacing: 10.w,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: Image.network(
-              avatar,
-              fit: BoxFit.cover,
-              width: 70.w,
-              height: 70.h,
+          if (avatar != '')
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.network(
+                avatar,
+                fit: BoxFit.cover,
+                width: 70.w,
+                height: 70.h,
+              ),
             ),
-          ),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:movies_app/core/failure/failure.dart';
 import 'package:movies_app/core/models/movie_details_model.dart';
 import 'package:movies_app/core/models/movie_model.dart';
+import 'package:movies_app/core/network/auth/base.dart';
 import 'package:movies_app/core/network/core/core_base.dart';
 
 class MovieDetailsRequest {
@@ -71,6 +72,31 @@ class MovieDetailsRequest {
       );
     } catch (e) {
       return Left(Failure(statusCode: "500", message: e.toString()));
+    }
+  }
+
+  static Future<Either<Failure, bool>> isFavourite(
+    int movieId,
+    String token,
+  ) async {
+    try {
+      final res = await dio.get(
+        "${Base.url}/${Endpoint.isFavorites}/$movieId",
+        options: Options(headers: {"Authorization": "Bearer $token"}),
+      );
+      return Right(res.data['data']);
+    } on DioException catch (e) {
+      return Left(
+        Failure(
+          statusCode:
+              e.response?.statusCode.toString() ?? 'INVALID_STATUS_CODE',
+          message: e.message ?? "Unexpected Error",
+        ),
+      );
+    } catch (e) {
+      return Left(
+        Failure(statusCode: "INVALID_REQUEST", message: e.toString()),
+      );
     }
   }
 }

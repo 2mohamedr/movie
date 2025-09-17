@@ -68,6 +68,7 @@ class _HomeMovieCategoryWidgetState extends State<HomeMovieCategoryWidget> {
                 return MovieBoxWidget(
                   posterImg: widget.movies[index].poster,
                   rating: widget.movies[index].rating,
+                  id: widget.movies[index].id,
                 );
               },
               separatorBuilder: (context, index) => SizedBox(width: 20.w),

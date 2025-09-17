@@ -45,7 +45,11 @@ class _SliderWidgetState extends State<SliderWidget> {
               Image.asset(AppImages.availableNowTextImg, width: 267.w),
               CarouselSlider(
                 items: widget.movies.map((e) {
-                  return MovieBoxWidget(posterImg: e.poster, rating: e.rating);
+                  return MovieBoxWidget(
+                    posterImg: e.poster,
+                    rating: e.rating,
+                    id: e.id,
+                  );
                 }).toList(),
                 options: CarouselOptions(
                   autoPlay: true,

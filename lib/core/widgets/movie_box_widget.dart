@@ -9,21 +9,19 @@ class MovieBoxWidget extends StatelessWidget {
     super.key,
     required this.posterImg,
     required this.rating,
+    required this.id,
   });
 
   final String posterImg;
   final String rating;
+  final int id;
 
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(
-          context,
-          RoutesName.movieDetails,
-          arguments: posterImg,
-        );
+        Navigator.pushNamed(context, RoutesName.movieDetails, arguments: id);
       },
       child: Container(
         margin: EdgeInsets.zero,

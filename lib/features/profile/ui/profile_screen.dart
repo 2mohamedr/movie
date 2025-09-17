@@ -231,6 +231,7 @@ class ProfileScreen extends StatelessWidget {
                     return MovieBoxWidget(
                       posterImg: tempMovies[index]['img'],
                       rating: tempMovies[index]['rating'].toString(),
+                      id: 0,
                     );
                   },
                 ),
