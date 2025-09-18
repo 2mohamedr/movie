@@ -6,7 +6,9 @@ import 'package:lottie/lottie.dart';
 import 'package:movies_app/core/constants/app_icons.dart';
 import 'package:movies_app/core/theme_manager/color_palette.dart';
 import 'package:movies_app/features/movie_details/widgets/cast_box_widget.dart';
+import 'package:movies_app/features/movie_details/widgets/favourite_button_widget.dart';
 import 'package:toastification/toastification.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../../core/constants/app_images.dart';
@@ -94,10 +96,8 @@ class MovieDetailsScreen extends StatelessWidget {
                                       color: ColorsPallete.white,
                                     ),
                                   ),
-                                  Icon(
-                                    Icons.bookmark_border_outlined,
-                                    size: 29,
-                                    color: ColorsPallete.white,
+                                  FavouriteButtonWidget(
+                                    movieModel: state.movieDetailsModel,
                                   ),
                                 ],
                               ),
@@ -172,7 +172,8 @@ class MovieDetailsScreen extends StatelessWidget {
                       children: [
                         FadeInRight(
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () =>
+                                openUrl(state.movieDetailsModel.url),
                             style: ElevatedButton.styleFrom(
                               shape: ContinuousRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
@@ -374,5 +375,16 @@ class MovieDetailsScreen extends StatelessWidget {
         },
       ),
     );
+  }
+
+  Future<void> openUrl(String url) async {
+    if (!await launchUrl(Uri.parse(url))) {
+      toastification.show(
+        type: ToastificationType.error,
+        title: Text("Cannot launch the URL"),
+        icon: Icon(Icons.error_outlined),
+        autoCloseDuration: Duration(seconds: 5),
+      );
+    }
   }
 }
